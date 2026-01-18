@@ -9,6 +9,7 @@ export class HomePage {
 
     private btn_profile = '.MuiAvatar-root';
     private btn_logout = '#logout-button111';
+    private dashboardTitle = "//h4[normalize-space()='Dashboard']";
 
     constructor(page: Page) {
         this.page = page;
@@ -27,4 +28,11 @@ export class HomePage {
         oi.ui(this.page).button(this.btn_logout).click();
         return this;
     }
+
+    //verify Dashboard page title
+    async step_verifyDashboardTitle(value:string) {
+        await oi.ui(this.page).label(this.dashboardTitle).assertText(value);
+        return this;
+    }
+
 } 
